@@ -26,12 +26,17 @@
 import llmlib as llmlib
 
 ###
+LANGUAGE = "spanish"
 def main(pdf_path):
+    
     print("=== Testing access to LLM ===")
     test_prompt = "What is 2 + 2?"
+    if "spanish" in LANGUAGE.lower()  :
+        test_prompt = f"Cuanto es 2+2"
     try: 
         response = llmlib.call_ollama(test_prompt)
         print(f"LLM responded to test prompt: {response}")
+        
     except Exception as e:
         print(f"Failed to get response from LLM: {e}")
         return          

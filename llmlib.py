@@ -53,6 +53,7 @@ set OLLAMA_KEEP_ALIVE=10m
 ollama run gemma2:2b
 """
 
+LANGUAGE = "spanish"
 
 def extract_text_from_pdf(pdf_path):
     """Extract text from a PDF file."""
@@ -79,7 +80,7 @@ def chunk_text(text, max_tokens=1500):
         chunks.append(" ".join(current_chunk))
     return chunks
 
-def generate_insights(chunks, model=None, timeout=LLM_TIMEOUT):
+def generate_insights(chunks, model=None, timeout=LLM_TIMEOUT, session_language=LANGUAGE):
     """Use local Ollama (CLI) to generate insights for each chunk.
 
     Requires the `ollama` CLI to be installed and the requested model available locally.
@@ -92,11 +93,15 @@ def generate_insights(chunks, model=None, timeout=LLM_TIMEOUT):
 
     insights = []
     system_prefix = "You are a helpful assistant for analyzing reports."
+    if "spanish" in session_language.lower():
+        system_prefix = "Eres un asistente útil para analizar informes."
 
     print(f"[llm-analysis] Using model='{model}' and api_url='{api_url}' for {len(chunks)} chunks")
 
     for i, chunk in enumerate(chunks):
         prompt = f"{system_prefix}\n\nExtract key insights, trends, and recommendations from the following report section:\n\n{chunk}"
+        if "spanish" in session_language.lower():
+            prompt = f"{system_prefix}\n\nExtrae en {session_language}, los conocimientos clave, tendencias y recomendaciones de la siguiente sección del informe:\n\n{chunk}"
 
         print(f"[llm-analysis] Processing chunk {i+1}/{len(chunks)} (chars: {len(chunk)})")
         preview = prompt.replace('\n', ' ')[:200]
