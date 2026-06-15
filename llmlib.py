@@ -94,14 +94,14 @@ def generate_insights(chunks, model=None, timeout=LLM_TIMEOUT, session_language=
     insights = []
     system_prefix = "You are a helpful assistant for analyzing reports."
     if "spanish" in session_language.lower():
-        system_prefix = "Eres un asistente útil para analizar informes."
+        system_prefix = f"Eres un asistente útil para analizar informes. Tus respuestas deben estar en {session_language}."
 
     print(f"[llm-analysis] Using model='{model}' and api_url='{api_url}' for {len(chunks)} chunks")
 
     for i, chunk in enumerate(chunks):
         prompt = f"{system_prefix}\n\nExtract key insights, trends, and recommendations from the following report section:\n\n{chunk}"
         if "spanish" in session_language.lower():
-            prompt = f"{system_prefix}\n\nExtrae en {session_language}, los conocimientos clave, tendencias y recomendaciones de la siguiente sección del informe:\n\n{chunk}"
+            prompt = f"{system_prefix}\n\nExtrae  los conocimientos clave, tendencias y recomendaciones de la siguiente sección del informe, tambien traduce a {session_language}:\n\n{chunk}"
 
         print(f"[llm-analysis] Processing chunk {i+1}/{len(chunks)} (chars: {len(chunk)})")
         preview = prompt.replace('\n', ' ')[:200]
