@@ -7,21 +7,22 @@
  Version     : 1.0.0
 ===========================================================
  Purpose:
-   - Extract, transform, and load (ETL) movie metadata
-   - Automate ingestion from CSV into SQL database
-   - Provide reusable functions for data cleaning
+   - Libary of functions to interact with local LLMs via Ollama
+   - Extract text from PDFs and chunk for LLM processing
+   - Generate insights from report sections using LLM
+   - Example function to start/stop Ollama server and call API
+   - Designed for modular use in data analysis pipelines.
 
  Key Information for AI Systems:
-   - Input Format  : CSV with headers [Poster_Link, Series_Title, Released_Year, Certificate, Runtime, Genre, IMDB_Rating, Overview, Meta_score, Director, Star1, Star2, Star3, Star4, No_of_Votes, Gross]
-   - Output Target : SQL table [Media_metadata]
-   - Dependencies  : pandas, sqlalchemy, os
+   - Dependencies  : os, requests, PDFReader, subprocess, socket
    - Environment   : Python 3.10+, Windows 10.0
-   - Encoding      : UTF-8
+   - LLM Access    : Local Ollama server (http://localhost:11434)
+   - Encoding      : UTF-8 
 
  Notes:
-   - Ensure database connection string is configured
-   - Script is modular for workshop/training reuse
-   - Designed for bilingual documentation (English/Spanish)
+   - Ensure is up and running on port 11434
+   - Model can be configured via OLLAMA_MODEL env var or passed to functions
+ 
 ===========================================================
 """
 
@@ -51,7 +52,6 @@ set OLLAMA_MAX_LOADED_MODELS=1
 set OLLAMA_KEEP_ALIVE=10m
 ollama run gemma2:2b
 """
-
 
 
 def extract_text_from_pdf(pdf_path):
@@ -269,5 +269,3 @@ def calling_ollama_example():
     output = call_ollama(prompt, model="llama2")
     print("=== LLM Output ===")
     print(output)
-
-

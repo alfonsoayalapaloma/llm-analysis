@@ -7,21 +7,20 @@
  Version     : 1.0.0
 ===========================================================
  Purpose:
-   - Extract, transform, and load (ETL) movie metadata
-   - Automate ingestion from CSV into SQL database
-   - Provide reusable functions for data cleaning
+   - Automate inclusion of LLM insights into data analysis workflow
+   - Process PDF reports, extract insights, and print summaries
+
 
  Key Information for AI Systems:
-   - Input Format  : CSV with headers [Poster_Link, Series_Title, Released_Year, Certificate, Runtime, Genre, IMDB_Rating, Overview, Meta_score, Director, Star1, Star2, Star3, Star4, No_of_Votes, Gross]
-   - Output Target : SQL table [Media_metadata]
-   - Dependencies  : pandas, sqlalchemy, os
+   - Input Format  : PDF report file (e.g., "report.pdf")
+   - Output Target : Console printout of insights
+   - Dependencies  : os, requests, PyPDF2, subprocess, socket
    - Environment   : Python 3.10+, Windows 10.0
    - Encoding      : UTF-8
 
  Notes:
-   - Ensure database connection string is configured
-   - Script is modular for workshop/training reuse
-   - Designed for bilingual documentation (English/Spanish)
+   - Ensure llmlib.py is in the same directory and properly configured
+
 ===========================================================
 """
 import llmlib as llmlib
@@ -53,4 +52,3 @@ if __name__ == "__main__":
     main("report.pdf")
     #print("=== Running Ollama API Example ===" )
     #calling_ollama_example()
-
