@@ -4,6 +4,7 @@
 
 ## Run Example:
 
+```bash
 (.venv) C:\sf\src\llm-analysis>python data_pipeline.py
 === Testing access to LLM ===
 [call_ollama] HTTP <Response [200]>
@@ -39,4 +40,6 @@ Recommendations:
 1. Continue to Invest in Digital Transformation: Given the growing importance of digital technologies, the company should continue to invest in digital and e-commerce initiatives to drive growth and efficiency.
 2. Expand into New Markets: The company should explore opportunities to expand its presence in new markets, particularly those with high growth potential, to drive future revenue and profit growth.
 3. Enhance Sustainability Efforts: The company should continue to prioritize sustainability and reduce its environmental footprint to build brand loyalty and attract environmentally-conscious consumers.
+
+```
 4. Foster a Strong Governance Culture: The company should maintain a strong governance culture to ensure that internal controls are effective and to protect shareholder value.
