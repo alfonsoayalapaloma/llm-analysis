@@ -24,7 +24,7 @@
    - Designed for bilingual documentation (English/Spanish)
 ===========================================================
 """
-import llm-lib as llmlib
+import llmlib as llmlib
 
 ###
 def main(pdf_path):
@@ -37,7 +37,6 @@ def main(pdf_path):
         print(f"Failed to get response from LLM: {e}")
         return          
         
-
 
     print(f"=== Extracting text from PDF: {pdf_path} ===")
     text = llmlib.extract_text_from_pdf(pdf_path)
