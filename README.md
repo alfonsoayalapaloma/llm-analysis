@@ -1,5 +1,8 @@
 # llm-analysis
-
+ Purpose:
+   - Automate inclusion of LLM insights into data analysis workflow
+   - Process PDF reports, extract insights, and print summaries
+   - Uses OLLAMA running in 'http://localhost:11434/api/generate'
 
 
 ## Run Example:
